@@ -5,8 +5,6 @@ import LogIn from './components/LogIn';
 import {Register} from './components/Register';
 import Home from './components/Home';
 import Account from "./components/Account";
-import {useSelector, useDispatch} from 'react-redux';
-import {increment, decrement} from './actions/counterActions';
 
 
 class BS1 extends Component{

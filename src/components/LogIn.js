@@ -52,11 +52,6 @@ class LogIn extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return{
-        property: true
-    }
-}
 
 const mapDispatchToProps = (dispatch) => {
     return {

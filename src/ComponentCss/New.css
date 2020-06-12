@@ -1,17 +1,21 @@
-#poleLogowania {
-    max-width: 30%;
-    height: 100%;
+#poleNewOrder {
+    max-width: 50%;
+    height: 80%;
     margin: auto;
     margin-top: 50px;
     padding:0px;
 }
 
-#poleNewOrder {
-    max-width: 50%;
-    height: 40%;
+#poleUpload {
     margin: auto;
-    margin-top: 50px;
+    margin-top: 20px;
+    margin-left: 5px;
     padding:0px;
+    display: inline-block;
+}
+
+form {
+    display: inline-block;
 }
 
 #lewy{
@@ -26,4 +30,9 @@
 
 #srodkowy{
     margin: auto;
+}
+
+p{
+    margin-left: 5px;
+    font-size: 15px;
 }

@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Table} from 'react-bootstrap';
 import {Route, Link} from "react-router-dom";
-import {NavBar} from './NavBar';
+import NaviBar from './NaviBar';
 import '../BS1.css';
-import {useSelector, connect, useDispatch} from 'react-redux';
+import {connect} from 'react-redux';
+import Orders from './Orders';
+import NewOrder from './New';
 
 
 function UserInfoElement(props){
@@ -37,13 +39,7 @@ function UserInfo(){
     );
 }
 
-function Orders(){
-    return(
-        <>
-            <h1>Orders</h1>
-        </>
-    );
-}
+
 
 function FailLogin(){
     return(
@@ -65,7 +61,10 @@ class Account extends Component{
             <>
             { this.props.isLogged ? (
                 <>
-                <NavBar/>
+                <NaviBar/>
+                <Route path='/Account/NewOrder'>
+                    <NewOrder/>
+                </Route>
                 <Route path='/Account/UserInfo'>
                     <UserInfo/>
                 </Route>
