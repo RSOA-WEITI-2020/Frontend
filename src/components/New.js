@@ -19,6 +19,14 @@ class MyForm extends React.Component {
     }
   }
 
+const handleChange = event => {
+  const fileUploaded = event.target.files[0];
+};
+
+const handleClick = event => {
+  document.getElementById('hiddenFileInput').click();
+};
+
 class NewOrder extends Component{
     render(){
         return(
@@ -26,12 +34,16 @@ class NewOrder extends Component{
                 <h1>New Order</h1>
                 <div id='poleNewOrder'>
                     <div id="poleUpload">
-                        <Button id="lewy" type="button">
+                        <Button id="lewy" type="button" onClick={handleClick}>
                             Upload File
                         </Button>
+                        <input type="file"
+                          id="hiddenFileInput"
+                          onChange={handleChange}
+                          style={{display:'none'}} 
+                        /> 
                     </div>
                     <div>
-
                         <p align = "left">Write code here:</p>
                         <MyForm/>
                     </div>

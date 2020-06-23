@@ -3,8 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Button, Form} from 'react-bootstrap';
 import {Link} from "react-router-dom";
 import '../BS1.css';
-import {useDispatch, connect} from 'react-redux';
-import {signIn} from '../actions/isLoggedActions'
+import {connect} from 'react-redux';
+import {signIn} from '../actions/isLoggedActions';
 
 
 

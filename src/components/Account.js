@@ -7,6 +7,9 @@ import '../BS1.css';
 import {connect} from 'react-redux';
 import Orders from './Orders';
 import NewOrder from './New';
+import ViewOrder from './ViewOrder';
+
+
 
 
 function UserInfoElement(props){
@@ -71,6 +74,7 @@ class Account extends Component{
                 <Route path='/Account/Orders'>
                     <Orders/>
                 </Route>
+                <Route path='/Account/ViewOrder/:order' component={ViewOrder} />
                 </>
             ) : (
                 <>

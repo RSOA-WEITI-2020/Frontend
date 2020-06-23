@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {Nav, Navbar, NavItem} from 'react-bootstrap';
-import {LinkContainer} from 'react-router-bootstrap';
+import {Nav, Navbar} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import '../ComponentCss/NaviBar.css'
 import {signOut} from '../actions/isLoggedActions'
