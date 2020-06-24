@@ -1,0 +1,38 @@
+#poleNewOrder {
+    max-width: 50%;
+    height: 80%;
+    margin: auto;
+    margin-top: 50px;
+    padding:0px;
+}
+
+#poleUpload {
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 5px;
+    padding:0px;
+    display: inline-block;
+}
+
+form {
+    display: inline-block;
+}
+
+#lewy{
+    margin-left:10px;
+    float: left;
+}
+
+#prawy{
+    margin-right: 10px;
+    float: right;
+}
+
+#srodkowy{
+    margin: auto;
+}
+
+p{
+    margin-left: 5px;
+    font-size: 15px;
+}
