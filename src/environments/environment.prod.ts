@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  authBaseUrl: '',
+  authBaseUrl: 'http://localhost:5000',
+  taskBaseUrl: 'http://localhost:5001',
+  paymentBaseUrl: 'http://localhost:5001',
 };

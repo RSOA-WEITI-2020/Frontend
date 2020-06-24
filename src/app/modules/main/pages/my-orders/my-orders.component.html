@@ -1,1 +1,20 @@
-<p>my-orders works!</p>
+<h4>Your tasks</h4>
+<button class="btn btn-primary" (click)="onRefresh()">Refresh</button>
+<clr-datagrid [clrDgLoading]="loading">
+  <clr-dg-column>Task ID</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+  <clr-dg-column>Start date</clr-dg-column>
+  <clr-dg-column>End date</clr-dg-column>
+
+  <clr-dg-placeholder>You have no tasks yet</clr-dg-placeholder>
+
+  <clr-dg-row *ngFor="let task of tasks">
+    <clr-dg-cell>
+      <a href="javascript:void(0);" (click)="onShowTaskDetails(task.id)">{{ task.id }}</a>
+    </clr-dg-cell>
+    <clr-dg-cell>{{ task.status }}</clr-dg-cell>
+    <clr-dg-cell>{{ task.start_date | date: 'dd-MM-yyyy' }} - {{ task.end_date | date: 'dd-MM-yyyy' }}</clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer> {{ tasks.length }} tasks</clr-dg-footer>
+</clr-datagrid>
+<button class="btn btn-primary" (click)="onNewTask()">Create new task</button>

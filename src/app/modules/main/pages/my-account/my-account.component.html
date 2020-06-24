@@ -1,1 +1,87 @@
-<p>my-account works!</p>
+<h4>User details</h4>
+<p></p>
+
+<div *ngIf="user">
+  <div class="clr-row">
+    <div class="clr-col-md-3">E-mail</div>
+    <div class="clr-col-md-3">{{ user.email }}</div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">First Name</div>
+    <div class="clr-col-md-3">{{ user.first_name }}</div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">Last Name</div>
+    <div class="clr-col-md-3">{{ user.last_name }}</div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">Address</div>
+    <div class="clr-col-md-3">{{ user.address }}</div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">Balance</div>
+    <div class="clr-col-md-3">{{ user.balance }} PLN</div>
+  </div>
+</div>
+
+<p></p>
+
+<button type="button" class="btn btn-primary" (click)="onShowTopUp()">Top Up Account</button>
+<button type="button" class="btn btn-primary" (click)="onShowChangeData()">Change Data</button>
+<button type="button" class="btn btn-primary" (click)="onShowChangePassword()">Change Password</button>
+
+<clr-modal [(clrModalOpen)]="showTopUpModal">
+  <div class="modal-title">
+    Top Up Your Account
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="topUpForm" clrForm>
+      <clr-input-container>
+        <label>Top Up Value (PLN)</label>
+        <input clrInput name="value" formControlName="value" />
+      </clr-input-container>
+    </form>
+    <div class="button-container">
+      <button type="button" class="btn btn-success" (click)="onTopUp()">
+        Top up
+      </button>
+      <button type="button" class="btn btn-primary" (click)="onCloseModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</clr-modal>
+
+<clr-modal [(clrModalOpen)]="showChangeDataModal">
+  <div class="modal-title">
+    Change your data
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="userDataForm" clrForm>
+      <clr-input-container>
+        <label>E-mail</label>
+        <input clrInput name="value" formControlName="email" />
+      </clr-input-container>
+      <clr-input-container>
+        <label>First name</label>
+        <input clrInput name="value" formControlName="first_name" />
+      </clr-input-container>
+      <clr-input-container>
+        <label>Last name</label>
+        <input clrInput name="value" formControlName="last_name" />
+      </clr-input-container>
+      <clr-textarea-container>
+        <label>Address</label>
+        <textarea clrTextarea name="value" formControlName="address"></textarea>
+      </clr-textarea-container>
+    </form>
+    <div class="button-container">
+      <button type="button" class="btn btn-success" (click)="onSaveUserData()">
+        Save
+      </button>
+      <button type="button" class="btn btn-primary" (click)="onCloseModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</clr-modal>
