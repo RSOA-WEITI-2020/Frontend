@@ -1,18 +1,27 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ClarityModule } from '@clr/angular';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app.routing';
+import { CoreModule } from './core/core.module';
+import { LoginModule } from './modules/login/login.module';
+import { MainModule } from './modules/main/main.module';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
+    CoreModule,
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    AppRoutingModule,
+    LoginModule,
+    ClarityModule,
+    BrowserAnimationsModule,
+    MainModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,0 +1,44 @@
+<clr-main-container>
+  <app-app-level-alert></app-app-level-alert>
+  <clr-header class="header-6">
+    <div class="branding">
+      <a routerLink="/main">
+        <clr-icon shape="list"></clr-icon>
+        <span class="title">ROSA</span>
+      </a>
+    </div>
+    <div class="header-nav" [clr-nav-level]="1">
+      <a class="nav-link nav-text" routerLinkActive="active" routerLink="./">General</a>
+    </div>
+    <div class="header-actions">
+      <clr-dropdown>
+        <button class="nav-text" clrDropdownTrigger aria-label="open user profile">
+          {{ (currentUser$ | async)?.email }}
+          <clr-icon shape="caret down"></clr-icon>
+        </button>
+        <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
+          <a clrDropdownItem (click)="onLogout()">Logout</a>
+        </clr-dropdown-menu>
+      </clr-dropdown>
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+    <clr-vertical-nav [clrVerticalNavCollapsible]="true" [(clrVerticalNavCollapsed)]="sidenavCollapsed">
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="my-orders">
+        <clr-icon clrVerticalNavIcon shape="event"></clr-icon>
+        My tasks
+      </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="my-account">
+        <clr-icon clrVerticalNavIcon shape="profile"></clr-icon>
+        My account
+      </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="new-order">
+        <clr-icon clrVerticalNavIcon shape="plus"></clr-icon>
+        New Order
+      </a>
+    </clr-vertical-nav>
+  </div>
+</clr-main-container>

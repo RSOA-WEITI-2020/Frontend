@@ -1,0 +1,84 @@
+<div class="login-wrapper">
+  <form clrForm class="login" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <section class="title">
+      <h3 class="welcome">Welcome to</h3>
+      ROSA
+      <h5 class="hint">Provide your data to register</h5>
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only">E-mail</label>
+        <input
+          type="text"
+          name="email"
+          clrInput
+          placeholder="e-mail"
+          formControlName="email"
+          class="clr-col-12 clr-col-md-12"
+        />
+        <clr-control-error>This filed is required</clr-control-error>
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only">Password</label>
+        <input
+          type="password"
+          name="password"
+          clrPassword
+          placeholder="password"
+          formControlName="password"
+          class="clr-col-12 clr-col-md-12"
+        />
+        <clr-control-error>This filed is required</clr-control-error>
+      </clr-password-container>
+
+      <hr />
+
+      <clr-input-container>
+        <label class="clr-sr-only">First Name</label>
+        <input
+          type="text"
+          name="firstName"
+          clrInput
+          placeholder="first name"
+          formControlName="firstName"
+          class="clr-col-12 clr-col-md-12"
+        />
+        <clr-control-error>This filed is required</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Last Name</label>
+        <input
+          type="text"
+          name="lastName"
+          clrInput
+          placeholder="last name"
+          formControlName="lastName"
+          class="clr-col-12 clr-col-md-12"
+        />
+        <clr-control-error>This filed is required</clr-control-error>
+      </clr-input-container>
+      <clr-input-container>
+        <label class="clr-sr-only">Address</label>
+        <input
+          type="text"
+          name="address"
+          clrInput
+          placeholder="address"
+          formControlName="address"
+          class="clr-col-12 clr-col-md-12"
+        />
+        <clr-control-error>This filed is required</clr-control-error>
+      </clr-input-container>
+      <div class="error active" [ngClass]="{ active: isError }">
+        Invalid data provided
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <ng-container [ngSwitch]="isLoading">
+          <span *ngSwitchCase="false">Register</span>
+          <span *ngSwitchCase="true" class="spinner spinner-inline spinner-inverse"></span>
+        </ng-container>
+      </button>
+      <a style="text-align: center; margin-top: 0.5rem;" routerLink="/login/login">Login</a>
+    </div>
+  </form>
+</div>
