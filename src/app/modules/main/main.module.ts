@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CodeEditorModule } from '@ngstack/code-editor';
 import { CoreModule } from 'src/app/core/core.module';
 import { MainComponent } from './main.component';
 import { MainRoutingModule } from './main.routing';
@@ -11,6 +12,6 @@ import { OrderDetailsComponent } from './pages/order-details/order-details.compo
 
 @NgModule({
   declarations: [MainComponent, MyAccountComponent, MyOrdersComponent, OrderDetailsComponent, NewOrderComponent],
-  imports: [CommonModule, MainRoutingModule, CoreModule, ReactiveFormsModule],
+  imports: [CommonModule, MainRoutingModule, CoreModule, ReactiveFormsModule, CodeEditorModule],
 })
 export class MainModule {}

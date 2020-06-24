@@ -1,1 +1,11 @@
-<p>new-order works!</p>
+<h4>Create New Task</h4>
+<p></p>
+<ngs-code-editor theme="vs-dark" language="qasm" [options]="options" [(value)]="code"> </ngs-code-editor>
+<div clrForm>
+  <clr-input-container>
+    <label>Shots</label>
+    <!-- <input clrInput placeholder="shoots" name="shots" [(ngModel)]="shots" /> -->
+  </clr-input-container>
+</div>
+
+<button class="btn btn-primary" type="button" (click)="onCreate()">Create</button>

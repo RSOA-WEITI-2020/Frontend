@@ -1,14 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { CodeModel } from '@ngstack/code-editor';
 
 @Component({
   templateUrl: './new-order.component.html',
-  styleUrls: ['./new-order.component.scss']
+  styleUrls: ['./new-order.component.scss'],
 })
 export class NewOrderComponent implements OnInit {
+  theme = 'vs-dark';
 
-  constructor() { }
+  options = {
+    lineNumbers: true,
+    contextmenu: true,
+  };
 
-  ngOnInit() {
+  code = '';
+  shots = '100';
+
+  constructor() {}
+
+  ngOnInit() {}
+
+  onCreate() {
+    console.log(this.code);
   }
-
 }

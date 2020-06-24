@@ -23,6 +23,7 @@
     "@clr/core": "3.0.1",
     "@clr/icons": "3.0.1",
     "@clr/ui": "3.0.1",
+    "@ngstack/code-editor": "^1.0.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

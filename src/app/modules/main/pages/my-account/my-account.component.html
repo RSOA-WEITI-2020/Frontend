@@ -85,3 +85,29 @@
     </div>
   </div>
 </clr-modal>
+
+<clr-modal [(clrModalOpen)]="showChangePasswordModal">
+  <div class="modal-title">
+    Change your password
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="changePasswordForm" clrForm>
+      <clr-password-container>
+        <label>Password</label>
+        <input clrPassword name="value" formControlName="password" />
+      </clr-password-container>
+      <clr-password-container>
+        <label>Repeat please</label>
+        <input clrPassword name="value" formControlName="passwordRepeat" />
+      </clr-password-container>
+    </form>
+    <div class="button-container">
+      <button type="button" class="btn btn-success" (click)="onSaveUserData()" [disabled]="!isPasswordValid()">
+        Save
+      </button>
+      <button type="button" class="btn btn-primary" (click)="onCloseModal()">
+        Cancel
+      </button>
+    </div>
+  </div>
+</clr-modal>
