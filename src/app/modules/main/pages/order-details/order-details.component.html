@@ -1,1 +1,20 @@
-<p>order-details works!</p>
+<h4>Task details</h4>
+
+<div *ngIf="task">
+  <div class="clr-row">
+    <div class="clr-col-md-3">Status</div>
+    <div class="clr-col-md-3">{{ task.status }}</div>
+  </div>
+  <div>
+    <h5>Code</h5>
+    <pre>
+    {{ task.code }}
+    </pre>
+  </div>
+  <div>
+    <h5>Result</h5>
+    <pre>
+    {{ task.result }}
+    </pre>
+  </div>
+</div>

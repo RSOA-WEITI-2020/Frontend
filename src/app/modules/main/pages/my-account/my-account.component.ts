@@ -78,11 +78,19 @@ export class MyAccountComponent implements OnInit {
     );
   }
 
-  onSavePassword() {}
+  onSavePassword() {
+    const { password, passwordRepeat } = this.changePasswordForm.value;
+  }
 
   onCloseModal() {
     this.showTopUpModal = false;
     this.showChangeDataModal = false;
     this.showChangePasswordModal = false;
+  }
+
+  isPasswordValid() {
+    const { password, passwordRepeat } = this.changePasswordForm.value;
+    console.log(password && password === passwordRepeat && password.length > 3);
+    return password && password === passwordRepeat && password.length > 3;
   }
 }
