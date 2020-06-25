@@ -20,7 +20,8 @@ export class TokenInterceptor implements HttpInterceptor {
     if (
       req.url.startsWith('assets') ||
       req.url.startsWith(`${environment.authBaseUrl}/v1/register`) ||
-      req.url.startsWith(`${environment.authBaseUrl}/v1/login`)
+      req.url.startsWith(`${environment.authBaseUrl}/v1/login`) ||
+      req.url.startsWith(`${environment.authBaseUrl}/v1/refresh-token`)
     ) {
       return next.handle(req);
     }
@@ -28,7 +29,7 @@ export class TokenInterceptor implements HttpInterceptor {
     return this.injectToken(req).pipe(
       switchMap((request) => next.handle(request)),
       catchError((err) => {
-        if (err instanceof HttpErrorResponse) {
+        if (err instanceof HttpErrorResponse && err.status === 401) {
           if (this.isTokenRefreshInProgress) {
             return this.tokenRefreshCompletedSubject$.pipe(
               filter((completed) => completed === true),
