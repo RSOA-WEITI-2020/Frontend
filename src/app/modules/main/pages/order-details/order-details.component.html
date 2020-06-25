@@ -26,4 +26,9 @@
 
     <pre *ngIf="task.status != 'ERROR'">{{ task.response | json }}</pre>
   </div>
+
+  <div>
+    <h5>Schema</h5>
+    <pre>{{ task.schema }}</pre>
+  </div>
 </div>

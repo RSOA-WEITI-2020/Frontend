@@ -14,4 +14,5 @@ export interface Task {
   response: any;
   cost: number;
   shots: number;
+  schema: string;
 }
