@@ -10,10 +10,11 @@
 
   <clr-dg-row *ngFor="let task of tasks">
     <clr-dg-cell>
-      <a href="javascript:void(0);" (click)="onShowTaskDetails(task.id)">{{ task.id }}</a>
+      <a href="javascript:void(0);" (click)="onShowTaskDetails(task.id)">Task {{ task.id }}</a>
     </clr-dg-cell>
     <clr-dg-cell>{{ task.status }}</clr-dg-cell>
-    <clr-dg-cell>{{ task.start_date | date: 'dd-MM-yyyy' }} - {{ task.end_date | date: 'dd-MM-yyyy' }}</clr-dg-cell>
+    <clr-dg-cell>{{ task.start_time | date: 'HH:mm:ss dd-MM-yyyy' }}</clr-dg-cell>
+    <clr-dg-cell>{{ task.end_time | date: 'HH:mm:ss dd-MM-yyyy' }}</clr-dg-cell>
   </clr-dg-row>
   <clr-dg-footer> {{ tasks.length }} tasks</clr-dg-footer>
 </clr-datagrid>

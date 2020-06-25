@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable, of, Subject } from 'rxjs';
-import { switchMap, takeUntil, tap } from 'rxjs/operators';
+import { switchMap, takeUntil, tap, take } from 'rxjs/operators';
 import { User } from '../model/user.model';
 import { AuthAPIService } from './auth-api.service';
 import { AuthService } from './auth.service';
@@ -14,13 +14,14 @@ export class CurrentUserService implements OnDestroy {
 
   currentUser$: Observable<User>;
 
-  constructor(auth: AuthService, authAPI: AuthAPIService) {
+  constructor(private auth: AuthService, private authAPI: AuthAPIService) {
     this.subscriptions$ = new Subject<void>();
     this.currentUserSubject$ = new BehaviorSubject<User>(null);
-    this.currentUser$ = this.currentUserSubject$.pipe();
+    this.currentUser$ = this.currentUserSubject$.asObservable();
 
     auth.authToken$
       .pipe(
+        tap(console.log),
         switchMap((token) => (token ? authAPI.getUserForToken(token) : of(null))),
         takeUntil(this.subscriptions$)
       )
@@ -30,5 +31,16 @@ export class CurrentUserService implements OnDestroy {
   ngOnDestroy() {
     this.subscriptions$.next();
     this.subscriptions$.complete();
+  }
+
+  updateUser() {
+    console.log('xFD');
+    this.auth.authToken$
+      .pipe(
+        tap(console.log),
+        switchMap((token) => (token ? this.authAPI.getUserForToken(token) : of(null))),
+        take(1)
+      )
+      .subscribe((user) => this.currentUserSubject$.next(user));
   }
 }

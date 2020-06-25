@@ -5,6 +5,15 @@
     <div class="clr-col-md-3">Status</div>
     <div class="clr-col-md-3">{{ task.status }}</div>
   </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">Shots</div>
+    <div class="clr-col-md-3">{{ task.shots }}</div>
+  </div>
+  <div class="clr-row">
+    <div class="clr-col-md-3">Cost</div>
+    <div class="clr-col-md-3">{{ task.cost }} PLN</div>
+  </div>
+
   <div>
     <h5>Code</h5>
     <pre>
@@ -13,8 +22,8 @@
   </div>
   <div>
     <h5>Result</h5>
-    <pre>
-    {{ task.response | json }}
-    </pre>
+    <pre *ngIf="task.status == 'ERROR'">{{ task.response.error }}</pre>
+
+    <pre *ngIf="task.status != 'ERROR'">{{ task.response | json }}</pre>
   </div>
 </div>

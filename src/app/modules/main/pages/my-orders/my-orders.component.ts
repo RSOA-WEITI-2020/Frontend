@@ -32,6 +32,7 @@ export class MyOrdersComponent implements OnInit {
 
     this.taskService.getMyTasks().subscribe(
       (tasks) => {
+        console.log(tasks);
         this.tasks = tasks;
 
         this.loading = false;

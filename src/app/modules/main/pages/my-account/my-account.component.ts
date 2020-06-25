@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { CurrentUserService } from 'src/app/core/auth/current-user.service';
 import { User } from 'src/app/core/model/user.model';
 import { UserService } from '../../services/user/user.service';
@@ -20,7 +21,11 @@ export class MyAccountComponent implements OnInit {
 
   user: User;
 
-  constructor(currentUserService: CurrentUserService, private fb: FormBuilder, private userService: UserService) {
+  constructor(
+    private currentUserService: CurrentUserService,
+    private fb: FormBuilder,
+    private userService: UserService
+  ) {
     this.topUpForm = this.fb.group({
       value: [],
     });
@@ -63,14 +68,21 @@ export class MyAccountComponent implements OnInit {
     this.showChangePasswordModal = true;
   }
 
-  onTopUp() {}
+  onTopUp() {
+    this.userService.topUpAccount(this.topUpForm.value.value).subscribe(
+      (uri) => {
+        window.location.href = uri;
+      },
+      (err) => alert(err.message)
+    );
+  }
 
   onSaveUserData() {
     const data = this.userDataForm.value;
     this.userService.updateUserData(data).subscribe(
-      (user) => {
+      () => {
         this.showChangeDataModal = false;
-        this.user = user;
+        this.currentUserService.currentUser$.pipe(take(1)).subscribe((user) => (this.user = user));
       },
       (error) => {
         alert(error.message);
@@ -79,7 +91,16 @@ export class MyAccountComponent implements OnInit {
   }
 
   onSavePassword() {
-    const { password, passwordRepeat } = this.changePasswordForm.value;
+    const { password } = this.changePasswordForm.value;
+
+    this.userService.changePassword(password).subscribe(
+      () => {
+        this.showChangePasswordModal = false;
+      },
+      (error) => {
+        alert(error.message);
+      }
+    );
   }
 
   onCloseModal() {

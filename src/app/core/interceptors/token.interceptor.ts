@@ -17,14 +17,18 @@ export class TokenInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     console.log('interceptor url', req.url);
-    if (req.url.startsWith('assets') || req.url.startsWith(`${environment.authBaseUrl}`)) {
+    if (
+      req.url.startsWith('assets') ||
+      req.url.startsWith(`${environment.authBaseUrl}/v1/register`) ||
+      req.url.startsWith(`${environment.authBaseUrl}/v1/login`)
+    ) {
       return next.handle(req);
     }
 
     return this.injectToken(req).pipe(
       switchMap((request) => next.handle(request)),
       catchError((err) => {
-        if (err instanceof HttpErrorResponse && err.status === 401) {
+        if (err instanceof HttpErrorResponse) {
           if (this.isTokenRefreshInProgress) {
             return this.tokenRefreshCompletedSubject$.pipe(
               filter((completed) => completed === true),

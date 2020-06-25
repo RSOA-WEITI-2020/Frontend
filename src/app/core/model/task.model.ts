@@ -13,4 +13,5 @@ export interface Task {
   status: TaskStatus;
   response: any;
   cost: number;
+  shots: number;
 }
