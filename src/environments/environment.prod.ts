@@ -1,6 +1,19 @@
-export const environment = {
-  production: true,
-  authBaseUrl: 'http://172.17.0.3/auth',
-  taskBaseUrl: 'http://172.17.0.3/task',
-  paymentBaseUrl: 'http://172.17.0.3/payment',
-};
+class Environment {
+  get production() {
+    return true;
+  }
+
+  get authBaseUrl() {
+    return `${window.location.origin}/auth`;
+  }
+
+  get taskBaseUrl() {
+    return `${window.location.origin}/task`;
+  }
+
+  get paymentBaseUrl() {
+    return `${window.location.origin}/payment`;
+  }
+}
+
+export const environment = new Environment();
